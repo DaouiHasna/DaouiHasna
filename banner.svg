@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280">
+  <defs>
+    <!-- Scanline pattern -->
+    <pattern id="scanlines" x="0" y="0" width="900" height="4" patternUnits="userSpaceOnUse">
+      <rect width="900" height="1" y="0" fill="rgba(0,255,255,0.03)"/>
+      <rect width="900" height="1" y="2" fill="rgba(0,0,0,0.15)"/>
+    </pattern>
+
+    <!-- Noise filter for glitch texture -->
+    <filter id="glitch-filter" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" result="displaced">
+        <animate attributeName="scale" values="0;8;0;3;0;12;0;0;5;0" dur="6s" repeatCount="indefinite"/>
+      </feDisplacementMap>
+    </filter>
+
+    <!-- RGB split filter for cyan channel -->
+    <filter id="rgb-cyan" x="-5%" y="-5%" width="110%" height="110%">
+      <feOffset dx="-3" dy="0" result="cyan-shift"/>
+      <feFlood flood-color="cyan" flood-opacity="0.6" result="cyan-color"/>
+      <feComposite in="cyan-color" in2="cyan-shift" operator="in" result="cyan-layer"/>
+      <feMerge>
+        <feMergeNode in="cyan-layer"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- RGB split filter for red channel -->
+    <filter id="rgb-red" x="-5%" y="-5%" width="110%" height="110%">
+      <feOffset dx="3" dy="0" result="red-shift"/>
+      <feFlood flood-color="#ff2060" flood-opacity="0.5" result="red-color"/>
+      <feComposite in="red-color" in2="red-shift" operator="in" result="red-layer"/>
+      <feMerge>
+        <feMergeNode in="red-layer"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow filter -->
+    <filter id="glow-cyan">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-pink">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-soft">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,255,255,0.06)" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Gradient backgrounds -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#000814"/>
+      <stop offset="40%" stop-color="#050d1a"/>
+      <stop offset="100%" stop-color="#000510"/>
+    </linearGradient>
+
+    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="30%" stop-color="#00ffff"/>
+      <stop offset="70%" stop-color="#ff2060"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <linearGradient id="line-grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="50%" stop-color="#00ffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <radialGradient id="glow-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="900" height="280" fill="url(#bg-grad)"/>
+  <rect width="900" height="280" fill="url(#grid)"/>
+  <rect width="900" height="280" fill="url(#scanlines)"/>
+  <ellipse cx="450" cy="140" rx="420" ry="160" fill="url(#glow-center)"/>
+
+  <!-- ── DECORATIVE CORNER BRACKETS ── -->
+  <!-- top-left -->
+  <polyline points="20,50 20,20 50,20" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.8" filter="url(#glow-cyan)"/>
+  <!-- top-right -->
+  <polyline points="880,50 880,20 850,20" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.8" filter="url(#glow-cyan)"/>
+  <!-- bottom-left -->
+  <polyline points="20,230 20,260 50,260" fill="none" stroke="#ff2060" stroke-width="2" opacity="0.8" filter="url(#glow-pink)"/>
+  <!-- bottom-right -->
+  <polyline points="880,230 880,260 850,260" fill="none" stroke="#ff2060" stroke-width="2" opacity="0.8" filter="url(#glow-pink)"/>
+
+  <!-- ── TOP & BOTTOM NEON LINES ── -->
+  <rect x="0" y="14" width="900" height="1.5" fill="url(#line-grad)" opacity="0.9" filter="url(#glow-cyan)"/>
+  <rect x="0" y="265" width="900" height="1.5" fill="url(#line-grad)" opacity="0.9" filter="url(#glow-pink)"/>
+
+  <!-- ── GLITCH BARS (random flicker rectangles) ── -->
+  <rect x="0" y="80" width="900" height="3" fill="rgba(0,255,255,0.07)" opacity="0">
+    <animate attributeName="opacity" values="0;0;0;0.8;0;0;0;0.5;0;0" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="80;80;80;110;80;80;150;80;80;80" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="3;3;3;8;3;3;2;3;3;3" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="0" y="160" width="900" height="2" fill="rgba(255,32,96,0.15)" opacity="0">
+    <animate attributeName="opacity" values="0;0;0;0;0;0.6;0;0;0;0.4;0" dur="7s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="160;160;160;160;160;190;160;160;160;130;160" dur="7s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ── VERTICAL GLITCH SLICES ── -->
+  <rect x="0" y="0" width="900" height="280" fill="none">
+    <animate attributeName="x" values="0;0;0;-6;0;0;4;0;0" dur="8s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ── CIRCUIT LINES decorative ── -->
+  <g stroke="#00ffff" stroke-width="0.6" fill="none" opacity="0.2" filter="url(#glow-soft)">
+    <line x1="60" y1="20" x2="60" y2="80"/>
+    <line x1="60" y1="80" x2="120" y2="80"/>
+    <circle cx="120" cy="80" r="2" fill="#00ffff"/>
+    <line x1="840" y1="20" x2="840" y2="60"/>
+    <line x1="840" y1="60" x2="790" y2="60"/>
+    <circle cx="790" cy="60" r="2" fill="#00ffff"/>
+    <line x1="60" y1="260" x2="60" y2="200"/>
+    <line x1="60" y1="200" x2="130" y2="200"/>
+    <circle cx="130" cy="200" r="2" fill="#ff2060"/>
+    <line x1="840" y1="260" x2="840" y2="200"/>
+    <line x1="840" y1="200" x2="770" y2="200"/>
+    <circle cx="770" cy="200" r="2" fill="#ff2060"/>
+  </g>
+
+  <!-- ── SIDE ACCENT BARS ── -->
+  <rect x="30" y="50" width="2" height="180" fill="url(#line-grad2)" opacity="0.5"/>
+  <rect x="868" y="50" width="2" height="180" fill="url(#line-grad2)" opacity="0.5"/>
+
+  <!-- ── STATUS BAR TOP ── -->
+  <text x="30" y="13" font-family="monospace" font-size="7" fill="#00ffff" opacity="0.5">SYS://SECURE_SHELL_v2.4.1</text>
+  <text x="720" y="13" font-family="monospace" font-size="7" fill="#ff2060" opacity="0.5">STATUS: ACTIVE ■</text>
+
+  <!-- ── MAIN GLITCH TITLE — RED LAYER (offset right) ── -->
+  <text x="453" y="118" text-anchor="middle" font-family="'Courier New', monospace" font-size="52" font-weight="900"
+        fill="#ff2060" opacity="0.6" letter-spacing="4">
+    HASNA DAOUI
+    <animate attributeName="x" values="453;453;453;459;453;453;446;453;453;453;453" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.6;0.6;0.9;0;0.6;0.8;0.6;0.6;0;0.6" dur="6s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ── MAIN GLITCH TITLE — CYAN LAYER (offset left) ── -->
+  <text x="447" y="118" text-anchor="middle" font-family="'Courier New', monospace" font-size="52" font-weight="900"
+        fill="#00ffff" opacity="0.6" letter-spacing="4">
+    HASNA DAOUI
+    <animate attributeName="x" values="447;447;447;441;447;453;447;447;447;447;447" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.6;0.6;0;0.9;0.6;0;0.6;0.6;0.9;0.6" dur="6s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ── MAIN TITLE — WHITE BASE ── -->
+  <text x="450" y="118" text-anchor="middle" font-family="'Courier New', monospace" font-size="52" font-weight="900"
+        fill="white" letter-spacing="4" filter="url(#glow-soft)">
+    HASNA DAOUI
+    <animate attributeName="x" values="450;450;450;454;450;448;450;450;450;450" dur="6s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ── DIVIDER LINE UNDER TITLE ── -->
+  <rect x="180" y="130" width="540" height="1" fill="url(#line-grad)" opacity="0.7"/>
+
+  <!-- ── SUBTITLE — glitch effect ── -->
+  <text x="453" y="162" text-anchor="middle" font-family="'Courier New', monospace" font-size="16" font-weight="400"
+        fill="#ff2060" opacity="0" letter-spacing="3">
+    CYBERSECURITY ENGINEER
+    <animate attributeName="opacity" values="0;0;0;0.7;0;0;0;0.5;0;0" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="453;453;453;458;453;453;446;453;453;453" dur="6s" repeatCount="indefinite"/>
+  </text>
+  <text x="450" y="162" text-anchor="middle" font-family="'Courier New', monospace" font-size="16" font-weight="400"
+        fill="#00ffff" letter-spacing="3" filter="url(#glow-cyan)">
+    CYBERSECURITY ENGINEER
+  </text>
+
+  <!-- ── SUBTITLE 2 ── -->
+  <text x="450" y="192" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#ff2060"
+        letter-spacing="2" opacity="0.8" filter="url(#glow-pink)">
+    ◈  CTF PLAYER  ·  NETWORK SECURITY  ·  CLOUD ARCHITECT  ◈
+  </text>
+
+  <!-- ── ANIMATED SCANNING LINE ── -->
+  <rect x="60" y="0" width="780" height="2" fill="rgba(0,255,255,0.15)" opacity="0.5">
+    <animate attributeName="y" from="-2" to="282" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.5;0.5;0.5;0" dur="4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ── BOTTOM STATUS ── -->
+  <text x="30" y="276" font-family="monospace" font-size="7" fill="#00ffff" opacity="0.4">[ INEZGANE, MOROCCO ]</text>
+  <text x="580" y="276" font-family="monospace" font-size="7" fill="#00ffff" opacity="0.4">EDIA – UEMF, FÈS · 4TH YEAR</text>
+
+  <!-- ── CORNER DOTS ── -->
+  <circle cx="30" cy="30" r="2.5" fill="#00ffff" opacity="0.6" filter="url(#glow-cyan)"/>
+  <circle cx="870" cy="30" r="2.5" fill="#00ffff" opacity="0.6" filter="url(#glow-cyan)"/>
+  <circle cx="30" cy="250" r="2.5" fill="#ff2060" opacity="0.6" filter="url(#glow-pink)"/>
+  <circle cx="870" cy="250" r="2.5" fill="#ff2060" opacity="0.6" filter="url(#glow-pink)"/>
+
+  <!-- ── BLINKING CURSOR ── -->
+  <rect x="588" y="100" width="3" height="28" fill="#00ffff" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0;0;1;1;0" dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>
