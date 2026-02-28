@@ -73,28 +73,35 @@ me.say_hi()
 
 ### 🚀 Featured Projects
 
-| 🔐 Project | 📝 Description | 🛠️ Stack |
-|-----------|---------------|---------|
-| **[Network Attack Simulation](#)** | Evil Twin & DDoS simulation + ML anomaly detection in real-time | Python, Aircrack-ng, ML |
-| **[Kubernetes Cluster Automation](#)** | Multi-node cluster + Rook/Ceph storage + Kubeflow MLOps | Bash, Kubeadm, Calico |
-| **[VMware vCenter VM Automation](#)** | Auto-deploy & configure VMs via Python & pyVmomi API | Python, VMware, JSON |
-| **[Secure Multi-Cloud (AWS & GCP)](#)** | Hybrid cloud + IAM + pentest + GDPR + CASB integration | AWS, GCP, Terraform |
-| **[Depression Predictor — Flask & ML](#)** | Web app predicting depression level (scale 1–10) | Python, Flask, ML |
-| **[University Network Design](#)** | OSPF routing + VLANs + ACL campus security | Packet Tracer, OSPF |
+Network Attack Simulation
+Evil Twin & DDoS simulation + ML anomaly detection in real-time
+Stack: Python, Aircrack-ng, Machine Learning
 
----
+Kubernetes Cluster Automation
+Multi-node cluster + Rook/Ceph storage + Kubeflow MLOps
+Stack: Bash, Kubeadm, Calico
+
+VMware vCenter VM Automation
+Auto-deploy & configure VMs via Python & pyVmomi API
+Stack: Python, VMware, JSON
+
+Secure Multi-Cloud (AWS & GCP)
+Hybrid cloud + IAM + pentest + GDPR + CASB integration
+Stack: AWS, GCP, Terraform
+
+Depression Predictor — Flask & ML
+Web app predicting depression level (scale 1–10)
+Stack: Python, Flask, Machine Learning
+
+University Network Design
+OSPF routing + VLANs + ACL campus security
+Stack: Packet Tracer, OSPF
+
+Software Development Internship – Bidsys
+2-month internship developing REST API microservices for agricultural data management and digitalization in Morocco
+Stack: Python, REST API, Microservices
 
 
-
-### 🐍 Contribution Snake
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hasnadaoui/hasnadaoui/output/snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hasnadaoui/hasnadaoui/output/snake.svg" />
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/hasnadaoui/hasnadaoui/output/snake.svg" />
-</picture>
-
----
 
 ### 📊 GitHub Stats
 
