@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./banner.svg" width="100%" alt="Hasna Daoui - Cybersecurity Student"/>
+<img src="./banner(1).svg" width="100%" alt="Hasna Daoui - Cybersecurity Student"/>
 
 
 </div>
