@@ -13,9 +13,7 @@
 class HasnaDaoui:
     def __init__(self):
         self.username     = "hasnadaoui"
-        self.location     = "Inezgane, Morocco 🇲🇦"
         self.role         = "Cybersecurity Engineering Student — 4th Year"
-        self.school       = "EDIA – UEMF, Fès"
 
         self.focus        = [
             "Network Attack Simulation & Detection",
