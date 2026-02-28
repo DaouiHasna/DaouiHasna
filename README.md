@@ -95,10 +95,6 @@ University Network Design
 OSPF routing + VLANs + ACL campus security
 Stack: Packet Tracer, OSPF
 
-Software Development Internship – Bidsys
-2-month internship developing REST API microservices for agricultural data management and digitalization in Morocco
-Stack: Python, REST API, Microservices
-
 
 
 ### 📊 GitHub Stats
