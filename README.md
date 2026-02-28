@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&duration=2000&pause=1000&color=1F4E79&center=true&vCenter=true&multiline=true&width=800&height=100&lines=Hey+There!+👋+I'm+Hasna+Daoui;Cybersecurity+Student)](https://git.io/typing-svg)
+<img src="./banner.svg" width="100%" alt="Hasna Daoui - Cybersecurity Student"/>
 
 
 </div>
